@@ -28,7 +28,7 @@ This is achievable by changing the bootloader option, we'll see later on how thi
 
 The bootloader is itself a program inside the memory 
 
-![Bootloader General Image](C:\Users\giaco\OneDrive\Documenti\Università\Calcolatori\Markdown folder\Bootloader-System mcu.png)
+![Bootloader General Image](https://github.com/dongiac/Can-bus-Bootloader/blob/master/Images/Bootloader-System%20mcu.png)
 
 ### STM32F303K8 Bootloader
 
