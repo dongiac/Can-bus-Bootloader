@@ -123,4 +123,3 @@ VP_SYS_VS_Systick.Mode=SysTick
 VP_SYS_VS_Systick.Signal=SYS_VS_Systick
 board=NUCLEO-F303K8
 boardIOC=true
-isbadioc=false

@@ -26,9 +26,17 @@ This is achievable by changing the bootloader option, we'll see later on how thi
 
 # Bootloader
 
-The bootloader is itself a program inside the memory 
+The bootloader is itself a program inside the memory of the microprocessor. Bootloaders usually provide a method of flashing new code to the device  and initialize the hardware before running the main program.
 
-![Bootloader General Image](https://github.com/dongiac/Can-bus-Bootloader/blob/master/Images/Bootloader-System%20mcu.png)
+This is possible due to the fact that the bootloader and the user program are isolated from themselves.
+
+![Bootloader memory](link)
+
+Usually at every reset (hardware or software) the first thing is to check if is necessary to step in the bootloader.
+
+![Bootloader General cycle](https://github.com/dongiac/Can-bus-Bootloader/blob/master/Images/Bootloader-System%20mcu.png)
+
+
 
 ### STM32F303K8 Bootloader
 

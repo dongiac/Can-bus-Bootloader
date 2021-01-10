@@ -44,9 +44,9 @@
  * de-initialize application specific parts, for example to stop blinking an LED, etc.
  */
 /** \brief Frequency of the external crystal oscillator. */
-#define BOOT_CPU_XTAL_SPEED_KHZ          (8000)
+#define BOOT_CPU_XTAL_SPEED_KHZ          (8000)//Se utlizzato con il quarzo esterno cambiare questo valore a 12000
 /** \brief Desired system speed. */
-#define BOOT_CPU_SYSTEM_SPEED_KHZ        (64000)
+#define BOOT_CPU_SYSTEM_SPEED_KHZ        (64000)//Inserire il valore di sysclk del file .ioc
 /** \brief Motorola or Intel style byte ordering. */
 #define BOOT_CPU_BYTE_ORDER_MOTOROLA     (0)
 /** \brief Enable/disable hook function call right before user program start. */
