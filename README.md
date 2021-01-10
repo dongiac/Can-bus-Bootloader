@@ -20,7 +20,7 @@ The bootloader is itself a program inside the memory of the microprocessor. Boot
 
 This is possible due to the fact that the bootloader and the user program are isolated from themselves.
 
-![Bootloader memory](link)
+![Bootloader memory](https://github.com/dongiac/Can-bus-Bootloader/blob/master/Images/Simple%20bootloader%20image.jpg)
 
 At every reset (hardware or software) the bootloader runs and check if a new code is available.
 
@@ -36,7 +36,7 @@ The first thing to know is that all the nucleo by the ST have their own bootload
 
 For us is impossible to modify this bootloader, the idea is to put a layer program in the flash memory before the user program.
 
-![Nucleo memory map](link)
+![Nucleo memory map](https://github.com/dongiac/Can-bus-Bootloader/blob/master/Images/M4%20memory%20map.png)
 
 From the image above we can see that the factory bootloader is for sure in the early memory pages from 0x0000 0000 to 0x0001 0000, and we can not access this location.
 
