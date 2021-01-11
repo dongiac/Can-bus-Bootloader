@@ -16,7 +16,7 @@ This is achievable with the help of a bootloader inside the memory of each node.
 
 # Bootloader
 
-The bootloader is itself a program inside the memory of the microprocessor. Bootloaders usually provide a method of flashing new code to the device  and initialize the hardware before running the main program.
+The bootloader is itself a program inside the memory of the microprocessor. Bootloaders usually provide a method of flashing new code to the device and initialize the hardware before running the main program.
 
 This is possible due to the fact that the bootloader and the user program are isolated from themselves.
 
@@ -46,7 +46,21 @@ In the Boot program, opening the linker script (Demo\Boot\STM32F303K8TX.ld) we w
 
 Meanwhile in the Prog program, opening the linker script (Demo\Prog\STM32F303K8TX.ld) we will set the start 8KBytes later, so it starts from 0x0800 2000.
 
+### OpenBLT
 
+This is an open source Bootloader, compatible with some microprocessor families.
+
+![OpenBLT structure](https://www.feaser.com/openblt/lib/exe/fetch.php?w=900&tok=b1cce5&media=manual:openblt_architecture.png)
+
+This is the general structure of OpenBLT.
+
+The **Application Specific** have the function to modify the bootloader based on project specific needs. Here we can find the *main()* function, *bootloader configuration file* and *hook functions.* (Here we can enable the backdoor or handling watchdogs timers).
+
+The **Target Independent** is the core of the bootloader, for our purpose. It handles the data transfer from the firmware file to the microcontroller's memory. *We don't have the need to modify this part.* This works with XCP protocol by ASAM, [here](https://www.asam.net/standards/detail/mcd-1-xcp/) can be found more information.
+
+The **Target Dependent** is the only part that need some changes when porting the bootloader to a new microcontroller. It contains the low-level drivers for accessing the communication, timer and memory peripherals. Then there is a sub-part of the *target dependent* which is the **Compiler Specific**; It contains code such as the c-startup routine and the interrupt vector table, which typically needs a little compiler magic to link to the correct memory location.
+
+![Detailed bootloader structure](https://www.feaser.com/openblt/lib/exe/fetch.php?w=700&tok=7a98bf&media=manual:openblt_modules.png)
 
 # Can-Bus
 
