@@ -64,7 +64,27 @@ The **Target Dependent** is the only part that need some changes when porting th
 
 # Can-Bus
 
+The **Controller Area Network** is the protocol of a specific bus used mainly in the automotive field.
 
+In our car, almost every node it's connected to the can-bus to have an easy and fast way to exchange information through the whole vehicle. It's based on a twisted pair of copper wire, with two 120 Ohm Resistor at both ends. 
+
+### Nodes
+
+Each node have three foundamental parts.
+
+- CPU or Microprocessor
+- Can controller (often an integral part of microprocessor)
+- Can Transciever
+
+![CAN NODE](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/CAN_Node.png/220px-CAN_Node.png)
+
+> N.B. Each node can transmit and receive, but NOT SIMULTANEUOSLY 
+
+### Communication
+
+The CAN-Bus use two differential signals, CANH and CANL, rispectively High and Low state. Creating a "Dominant" bit when CANH>CANL and "Recessive" one in the other cases.  Having a Wired-AND convenction this will give the priority to the nodes with lower ID. The can is based on a CSMA/CD+AMP. CSMA stands for Carrier Sense Multiple Access, so each node have to wait for a prescribed amount of time of inactivity, before attempting to send a message. CD stands for Collision Detection, basically a letteral meaning and Arbitration on Message Priority (Lower ID nodes have the priority). 
+
+**Doing an complete explanation of the can-bus is not the purpose of this project, but knowing what it is will explain why we are going to use it as the bus for updating our nodes** 
 
 # What will we need?
 
