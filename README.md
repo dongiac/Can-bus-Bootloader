@@ -42,9 +42,9 @@ From the image above we can see that the factory bootloader is for sure in the e
 
 We will use the 64KBytes of the higher Flash Memory (from 0x0800 0000 to 0x0801 0000). 
 
-In the Boot program, opening the linker script (Demo\Boot\STM32F303K8TX.ld) we will set the start from 0x0800 0000
+In the Boot program, opening the linker script (Demo\Boot\STM32F303K8TX.ld) we will set the start from 0x0800 0000 and LENGTH = 8K.
 
-Meanwhile in the Prog program, opening the linker script (Demo\Prog\STM32F303K8TX.ld) we will set the start 8KBytes later, so it starts from 0x0800 2000.
+Meanwhile in the Prog program, opening the linker script (Demo\Prog\STM32F303K8TX.ld) we will set the start 8KBytes later, so it starts from 0x0800 2000 and LENGTH = 64K - 8K.
 
 ### OpenBLT
 
@@ -226,9 +226,9 @@ Modification needed:
     >    *
     >    */
     >   /* Is this the connect command, but not addressed to us? */
-    >   if ( (data[0] == 0xFF) &&
-    >        (len == 2) && 
-    >        (data[1] != BOOT_XCP_CONNECT_MODE_NODE_ADDR) )
+    >   if ( (rxMsgData[0] == 0xFF) &&
+    >        (rxMsgHeader.DLC == 2) && 
+    >        (rxMsgData[1] != BOOT_XCP_CONNECT_MODE_NODE_ADDR) )
     >   {
     >     /* Do not establish a connection simply by ignoring this connect
     >      * command. This is achieved by informing the XCP communication
