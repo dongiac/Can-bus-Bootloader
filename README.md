@@ -4,11 +4,11 @@
 
 ### Why?
 
-We need in our car an easy way to update the nodes. The actual programming routine needs to take out each node and code it with the st-link via USB.
+Since we've built our own PCBs, the actual programming routine needs to take out each node and code it with the st-link via USB.
 **This, in race condition, needs too much time to be applied.**
 The idea is to leave the nodes attached to the car, and with the help of the LAWICEL CANUSB (can to usb interface) and Microboot (software updater) we can easily update them.
 
-### How
+### How?
 
 This is achievable with the help of a bootloader inside the memory of each node. 
 
@@ -168,7 +168,7 @@ Modification needed:
 
 - We need to make a node individually addressable, we will use what's called a "Hook function" called 
 
-  > XcpPacketReceiveHook()
+  > XcpPacketReceivedHook()
 
   - First open *blt_conf.h* and insert this lines of code:
 
@@ -286,6 +286,20 @@ Now if the led blink fast, the bootloader is active.
 ### Last step
 
 - Connect the nucleo or the wheel node to the can-bus
+
 - Connect LAWICEL CANUSB device in the pc ([Download DRIVER](http://www.can232.com/?page_id=75))
+
 - In the repository path go to Host and open MicroBoot.exe
-  - First on setting 
+  
+  - First on *settings*, under Communication Interface, on interface selection choose *XCP on CAN*
+  - Under the voice communication choose *Lawicel CANUSB* 
+  - **IF** multiple can is used under Session Protocol, the *Mode* stands for the Node Address
+  
+- Now we can close this and choose what file we want to update, we have to choose the S-Record file.
+
+  Go to the demo path Prog\Debug\nome_file**.srec** 
+
+- Now that the file is selected it will start on itself
+
+Now we have both the user program and Bootloader in the flash memory.
+
